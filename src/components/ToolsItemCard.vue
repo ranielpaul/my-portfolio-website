@@ -4,22 +4,40 @@ defineProps({
         type: Object,
         required: true,
     },
-    isAlone: {
+    category: {
+        type: String,
+        required: true,
+    },
+    pinned: {
         type: Boolean,
         default: false,
+    },
+    positionStyle: {
+        type: Object,
+        required: true,
     },
 })
 </script>
 
 <template>
-    <div :class="[isAlone ? 'col-12' : 'col-6', 'tool-item']">
-        <div
-            class="p-3 rounded-3 bg-light border d-flex flex-column align-items-center justify-content-center text-center tool-icon-tile h-100"
-            :title="tool.title || tool.name"
-        >
-            <img :src="tool.image" :alt="tool.name" class="mb-2 tool-image" />
-            <span class="text-xs fw-bold text-dark font-display">{{ tool.name }}</span>
-            <span class="font-mono-code tool-img-text">{{ tool.subtitle }}</span>
-        </div>
-    </div>
+    <button
+        class="tool-postit"
+        :class="{ 'is-pinned': pinned }"
+        :style="positionStyle"
+        type="button"
+        :aria-pressed="pinned"
+        :aria-label="`${tool.name}, ${category}. Click to ${pinned ? 'unpin' : 'pin'} note.`"
+        :title="tool.title || tool.name"
+    >
+        <span class="tool-postit-tape" aria-hidden="true"></span>
+        <span class="tool-postit-meta">
+            <span class="tool-postit-category">{{ category }}</span>
+            <span class="tool-postit-index">✦</span>
+        </span>
+        <span class="tool-postit-content">
+            <img :src="tool.image" :alt="tool.name" class="tool-image" />
+            <span class="tool-postit-name">{{ tool.name }}</span>
+            <span class="tool-postit-description">{{ tool.subtitle }}</span>
+        </span>
+    </button>
 </template>
