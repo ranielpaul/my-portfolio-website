@@ -1,0 +1,45 @@
+[
+  {
+    "category": "Frontend",
+    "title": "Frontend",
+    "subtitle": "UI, Styling & Web Engines",
+    "items": [
+      { "name": "HTML5", "subtitle": "Markup", "image": "./images/stack/html5.svg", "title": "HTML5" },
+      { "name": "CSS3", "subtitle": "Styling", "image": "./images/stack/css3.svg", "title": "Cascading Style Sheets (CSS)" },
+      { "name": "JavaScript", "subtitle": "Language", "image": "./images/stack/javascript.svg", "title": "JavaScript" },
+      { "name": "React.js", "subtitle": "Library", "image": "./images/stack/react.svg", "title": "React.js" },
+      { "name": "Next.js", "subtitle": "Framework", "image": "./images/stack/nextjs.svg", "title": "Next.js" },
+      { "name": "Vue.js", "subtitle": "Framework", "image": "./images/stack/vue.svg", "title": "Vue.js" },
+      { "name": "Bootstrap", "subtitle": "UI Framework", "image": "./images/stack/bootstrap.svg", "title": "Bootstrap (Framework)" },
+      { "name": "Tailwind CSS", "subtitle": "UI Framework", "image": "./images/stack/tailwindcss.svg", "title": "Tailwind CSS" }
+    ]
+  },
+  {
+    "category": "Backend",
+    "title": "Backend",
+    "subtitle": "Services, Database & Cloud",
+    "items": [
+      { "name": "Python", "subtitle": "Backend Engine", "image": "./images/stack/python.svg", "title": "Python" },
+      { "name": "MongoDB", "subtitle": "NoSQL Database", "image": "./images/stack/mongodb.svg", "title": "MongoDB" },
+      { "name": "Express.js", "subtitle": "Node.js Framework", "image": "./images/stack/express.svg", "title": "Express.js" },
+      { "name": "Node.js", "subtitle": "Runtime", "image": "./images/stack/nodejs.svg", "title": "Node.js" },
+      { "name": "Supabase", "subtitle": "PostgreSQL BaaS", "image": "./images/stack/supabase.svg", "title": "Supabase" },
+      { "name": "Java", "subtitle": "Backend Engine", "image": "./images/stack/java.svg", "title": "Java" },
+      { "name": "Render", "subtitle": "Cloud Hosting", "image": "./images/stack/render.svg", "title": "Render" }
+    ]
+  },
+  {
+    "category": "Tools & Others",
+    "title": "Tools & Others",
+    "subtitle": "VCS, Workflow & Game Engines",
+    "items": [
+      { "name": "Git", "subtitle": "Version Control", "image": "./images/stack/git.svg", "title": "Git" },
+      { "name": "GitHub", "subtitle": "Cloud VCS", "image": "./images/stack/github.svg", "title": "GitHub" },
+      { "name": "Gitea", "subtitle": "Self-Hosted Git", "image": "./images/stack/gitea.svg", "title": "Gitea" },
+      { "name": "VSCode", "subtitle": "IDE Editor", "image": "./images/stack/vscode.svg", "title": "VSCode" },
+      { "name": "Trello", "subtitle": "Project Board", "image": "./images/stack/trello.svg", "title": "Trello" },
+      { "name": "Sublime Text", "subtitle": "Code Editor", "image": "./images/stack/sublimetext.svg", "title": "Sublime Text" },
+      { "name": "Unity", "subtitle": "Game & 3D", "image": "./images/stack/unity.svg", "title": "Unity" }
+    ]
+  }
+]

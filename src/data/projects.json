@@ -1,0 +1,61 @@
+[
+  {
+    "id": "Capstone-Web-Portfolio",
+    "badge": "Live Project",
+    "title": "Capstone Web Portfolio",
+    "description": "A capstone web portfolio showcasing the numerous projects, tools, and technologies that I am aware of",
+    "tags": ["HTML", "Bootstrap", "JavaScript", "TailWindCSS"],
+    "imageBg": "./images/projects/capstone-web-portfolio.png"
+  },
+  {
+    "id": "E-commerce-API",
+    "badge": "Documentation",
+    "title": "E-Commerce API Documentation",
+    "description": "Dynamic E-Commerce Workflow Management. The system features dynamic routes for order processing, real-time inventory updates, and secure user authentication. It also supports seamless automated order reporting and comprehensive product management. Documented Backend API published publicly using Postman",
+    "tags": ["Javascript", "Amazon Web Service Lambda", "Expressjs", "MongoDB", "Postman"],
+    "imageBg": "./images/projects/E-commerce-API.png",
+    "url": "https://ranielpaul-2841292.postman.co/documentation/58907649-1087f4a0-ef9d-4f9d-a5a2-afcb3c29b4f4/publish?workspaceId=92191070-9e7c-4b5b-9889-0b09631b458c&authFlowId=e8496a65-4a0a-47c8-95a0-9a7bcad00d23&_pmt=pmMTc5MTg1MDI0Njg4MQ%253D%253D%257CPM.MjAyNi0wOS0xMVQwOTo1OTo1Ni4yOTRa"
+  },
+  {
+    "id": "Course-Booking-API",
+    "badge": "Documentation",
+    "title": "Course Booking API Documentation",
+    "description": "RESTful API for managing course enrollments, featuring user registration, authentication, and retrieval of user details. Supports course creation, updates, archiving, activation, and student enrollment. Publicly documented using Postman.",
+    "tags": ["HTML", "Bootstrap", "Postman", "ExpressJS", "MongoDB"],
+    "imageBg": "./images/projects/Course-Booking-API.png",
+    "url": "https://documenter.getpostman.com/view/58907649/2sBYHYvJJ4"
+  },
+  {
+    "id": "Course-Booking-App",
+    "badge": "Completed Project",
+    "title": "Course Booking App",
+    "description": "A MERN-stack course enrollment sytstem featuring user registration, authentication, and profile management. Authenticated users can create, update, archive, and activate courses The platform also allows users to browse available courses and enroll seamlessly.",
+    "tags": ["HTML", "Bootstrap", "Postman", "Node.js", "Axios", "MongoDB"],
+    "imageBg": "./images/projects/Course-Booking-App.png"
+  },
+  {
+    "id": "E-Commerce-App",
+    "badge": "Live Project",
+    "title": "E-Commerce App",
+    "description": "MERN E-Commerce Platform. The platform features dynamic product catalog with filtering and sorting. real-time search, seamless cart updates, secure checkout, and a comprehensive admin dashboard with real-time analytics and user management capabilities.",
+    "tags": ["HTML", "Bootstrap", "VueJs", "Axios", "Amazon Web Service Lambda", "Expressjs", "MongoDB"],
+    "imageBg": "./images/projects/E-Commerce-App.png",
+    "url": "http://zuitt-bootcamp-prod-645-10068-limotan.s3-website.us-east-1.amazonaws.com"
+  },
+  {
+    "id": "Airline-Mockup",
+    "badge": "Future Project",
+    "title": "Airline Booking System Mockup",
+    "description": "Side Project: Conceptual design showcasing an intuitive UIfor flight search, seat selection, and booking confirmation, focusing on user experience and workflow efficiency.",
+    "tags": ["Python", "HTML", "Bootstrap", "Postman"],
+    "imageBg": "./images/projects/placeholder.png"
+  },
+  {
+    "id": "Airline-Prototype",
+    "badge": "Future Project",
+    "title": "Airline Booking System Prototype",
+    "description": "Side Project: Interactive prototype simulating end-to-end airline booking functionalities, including flight search, reservation, payment, processing, and real-time ticket management.",
+    "tags": ["Python", "HTML", "Bootstrap", "Postman"],
+    "imageBg": "./images/projects/placeholder.png"
+  }
+]
