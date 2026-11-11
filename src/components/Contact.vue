@@ -15,8 +15,6 @@
     const showSuccess = ref(false)
 
     // Form data
-    const subject = 'New message from Portfolio Contact Form';
-    const sentDetails = ref({ name: '', subject: '', email: '' })
     const formValues = ref({ name: '', email: '', subject: '', message: '' })
     let submissionTimeout
     
@@ -33,10 +31,8 @@
 		try {
 			const response = await axios.post('https://api.web3forms.com/submit', {
 				access_key: WEB3FORMS_ACCESS_KEY,
-				subject: subject,
-                name: formValues.value.name,
+                ...formValues.value,
                 subject: formValues.value.subject || 'General Inquiry',
-                email: formValues.value.email,
 			}, {
 				headers: {
 					'Content-Type': 'application/json',
@@ -46,9 +42,10 @@
 
 			const result = response.data;
 
-			if (result.success) {
-				notyf.success('Message Sent!');
-			}
+            if (result.success) {
+            showSuccess.value = true;
+            notyf.success('Message Sent!');
+            }
 		}
 		catch (error) {
 			notyf.error("Failed to send email!");
@@ -61,7 +58,6 @@
     function resetForm() {
         clearTimeout(submissionTimeout)
         formValues.value = { name: '', email: '', subject: '', message: '' }
-        sentDetails.value = { name: '', subject: '', email: '' }
         showSuccess.value = false
         isSending.value = false
     }
@@ -201,7 +197,7 @@
                 </div>
                 <h3 class="fs-4 fw-bold text-dark mb-2">Message Dispatched!</h3>
                 <p class="text-secondary mb-4 mx-auto">
-                    Thank you, <strong id="sentName">{{ sentDetails.name }}</strong>. Your note regarding &ldquo;<span id="sentSubject">{{ sentDetails.subject }}</span>&rdquo; has been sent. A confirmation has been routed to <strong id="sentEmail">{{ sentDetails.email }}</strong>.
+                    Thank you, <strong id="sentName">{{ formValues.name }}</strong>. Your note regarding &ldquo;<span id="sentSubject">{{ formValues.subject || 'General Inquiry' }}</span>&rdquo; has been sent. A confirmation has been routed to <strong id="sentEmail">{{ formValues.email }}</strong>.
                 </p>
                 <button type="button" id="resetBtn" class="btn-white-secondary" @click="resetForm">
                     Send Another Message
