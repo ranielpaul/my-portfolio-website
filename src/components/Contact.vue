@@ -54,7 +54,7 @@
 			notyf.error("Failed to send email!");
 		}
 		finally {
-			isLoading.value = false;
+			isSending.value = false;
 		}
 	};
 
