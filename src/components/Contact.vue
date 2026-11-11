@@ -70,7 +70,7 @@
 
     // Captcha 
 
-	const SITE_KEY='6LcmsBouAAAAACJkrqpNmOumAMCihBdNec6S6KfR'
+	const SITE_KEY='6LcmsBouAAAAAN_1ZkNCaVrEMbiuR7qpqAJ7RmVu'
 	const SECRET_KEY='6LcmsBouAAAAACJkrqpNmOumAMCihBdNec6S6KfR'	
         
 	const recaptchaContainer = ref(null);
@@ -189,8 +189,7 @@
                 <!-- recaptcha checkbox -->
                 <div class="col-12 mt-2 d-flex justify-content-center">
                     <div ref="recaptchaContainer"></div>
-                </div>
-                    <div>asd</div>                
+                </div>            
 
                 </div>
                 </form>
