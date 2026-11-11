@@ -70,8 +70,8 @@
 
     // Captcha 
 
-	const SITE_KEY='6LcqphouAAAAABIZ9o8-LNTi6EeMaduBGxumdI6v'
-	const SECRET_KEY='6LcqphouAAAAAJ27niEKF9ccKLJCBjzxeZI0d4Ph'	
+	const SITE_KEY='6LcmsBouAAAAACJkrqpNmOumAMCihBdNec6S6KfR'
+	const SECRET_KEY='6LcmsBouAAAAACJkrqpNmOumAMCihBdNec6S6KfR'	
         
 	const recaptchaContainer = ref(null);
 	const recaptchaWidgetId = ref(null);
