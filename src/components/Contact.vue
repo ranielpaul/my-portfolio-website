@@ -1,37 +1,128 @@
 <script setup>
-import { onUnmounted, ref } from 'vue'
+    import { onUnmounted, ref, onMounted, onBeforeUnmount } from 'vue'
+    import axios from 'axios';
+    import { Notyf } from 'notyf';
+    import 'notyf/notyf.min.css';
 
-const form = ref(null)
-const isSending = ref(false)
-const showSuccess = ref(false)
-const sentDetails = ref({ name: '', subject: '', email: '' })
-const formValues = ref({ name: '', email: '', subject: '', message: '' })
-let submissionTimeout
+	const notyf = new Notyf();
 
-function submitForm() {
-  if (!form.value?.reportValidity() || !formValues.value.name || !formValues.value.email) return
+    // Form
+    const WEB3FORMS_ACCESS_KEY ='8295ec4a-e929-4df6-b7ae-31be2aca2f8c';
+    const form = ref(null)
 
-  isSending.value = true
-  submissionTimeout = setTimeout(() => {
-    sentDetails.value = {
-      name: formValues.value.name,
-      subject: formValues.value.subject || 'General Inquiry',
-      email: formValues.value.email,
+    // Form Statuses
+    const isSending = ref(false)
+    const showSuccess = ref(false)
+
+    // Form data
+    const subject = 'New message from Portfolio Contact Form';
+    const sentDetails = ref({ name: '', subject: '', email: '' })
+    const formValues = ref({ name: '', email: '', subject: '', message: '' })
+    let submissionTimeout
+    
+    const submitForm = async () => {
+        if (!form.value?.reportValidity() || !formValues.value.name || !formValues.value.email) return
+
+        if (!recaptchaToken.value) {
+                notyf.error('Please verify that you are not a robot.');
+                return;
+            }		
+
+        isSending.value = true
+
+		try {
+			const response = await axios.post('https://api.web3forms.com/submit', {
+				access_key: WEB3FORMS_ACCESS_KEY,
+				subject: subject,
+                name: formValues.value.name,
+                subject: formValues.value.subject || 'General Inquiry',
+                email: formValues.value.email,
+			}, {
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json'
+				}
+			});
+
+			const result = response.data;
+
+			if (result.success) {
+				notyf.success('Message Sent!');
+			}
+		}
+		catch (error) {
+			notyf.error("Failed to send email!");
+		}
+		finally {
+			isLoading.value = false;
+		}
+	};
+
+    function resetForm() {
+        clearTimeout(submissionTimeout)
+        formValues.value = { name: '', email: '', subject: '', message: '' }
+        sentDetails.value = { name: '', subject: '', email: '' }
+        showSuccess.value = false
+        isSending.value = false
     }
-    showSuccess.value = true
-    isSending.value = false
-  }, 700)
-}
 
-function resetForm() {
-  clearTimeout(submissionTimeout)
-  formValues.value = { name: '', email: '', subject: '', message: '' }
-  sentDetails.value = { name: '', subject: '', email: '' }
-  showSuccess.value = false
-  isSending.value = false
-}
+    onUnmounted(() => clearTimeout(submissionTimeout))
 
-onUnmounted(() => clearTimeout(submissionTimeout))
+    // Captcha 
+
+	const SITE_KEY='6LcqphouAAAAABIZ9o8-LNTi6EeMaduBGxumdI6v'
+	const SECRET_KEY='6LcqphouAAAAAJ27niEKF9ccKLJCBjzxeZI0d4Ph'	
+        
+	const recaptchaContainer = ref(null);
+	const recaptchaWidgetId = ref(null);
+	const recaptchaToken = ref('');
+
+	// Callback called by reCAPTCHA when successful
+	function onRecaptchaSuccess(token) {
+	recaptchaToken.value = token;
+	}
+
+	// Callback when expired
+	function onRecaptchaExpired() {
+	recaptchaToken.value = '';
+	}
+
+	// Function to render the reCAPTCHA widget
+	function renderRecaptcha() {
+	if (!window.grecaptcha) {
+		console.error('reCAPTCHA not loaded');
+		return;
+	}
+
+	recaptchaWidgetId.value = window.grecaptcha.render(recaptchaContainer.value, {
+		sitekey: SITE_KEY,
+		size: 'normal', // or 'compact'
+		callback: onRecaptchaSuccess,
+		'expired-callback': onRecaptchaExpired,
+	});
+	}
+
+	// Function to reset reCAPTCHA 
+	function resetRecaptcha() {
+		if (recaptchaWidgetId.value !== null) {
+			window.grecaptcha.reset(recaptchaWidgetId.value);
+			recaptchaToken.value = '';
+		}
+	}
+
+	onMounted(() => {
+		const interval = setInterval(() => {
+			if (window.grecaptcha && window.grecaptcha.render) {
+			renderRecaptcha();
+			clearInterval(interval);
+			}
+		}, 100);
+
+		onBeforeUnmount(() => {
+			clearInterval(interval);
+		});
+	});
+
 </script>
 
 <template>
@@ -94,6 +185,11 @@ onUnmounted(() => clearTimeout(submissionTimeout))
                         <i v-if="!isSending" class="bi bi-send-fill fs-6 ms-1"></i>
                     </button>
                     </div>
+                <!-- recaptcha checkbox -->
+                <div class="col-12 mt-2 d-flex justify-content-center">
+                    <div ref="hcaptchaContainer"></div>
+                </div>
+
                 </div>
                 </form>
 
