@@ -185,9 +185,10 @@
                         <i v-if="!isSending" class="bi bi-send-fill fs-6 ms-1"></i>
                     </button>
                     </div>
+                    
                 <!-- recaptcha checkbox -->
                 <div class="col-12 mt-2 d-flex justify-content-center">
-                    <div ref="hcaptchaContainer"></div>
+                    <div ref="recaptchaContainer"></div>
                 </div>
 
                 </div>
