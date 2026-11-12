@@ -366,7 +366,9 @@ body {
   background: var(--note-color);
   box-shadow: 0 15px 24px -10px rgba(15, 23, 42, 0.42), 0 5px 9px -5px rgba(15, 23, 42, 0.3);
   color: #0f172a;
-  cursor: pointer;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
   text-align: left;
   transform: translate(-50%, -50%) rotate(var(--note-rotation));
   transform-origin: center;
@@ -379,6 +381,12 @@ body {
   border-color: rgba(37, 99, 235, 0.55);
   box-shadow: 0 24px 36px -12px rgba(15, 23, 42, 0.5), 0 0 0 3px rgba(37, 99, 235, 0.16);
   transform: translate(-50%, -50%) rotate(0) scale(1.09);
+}
+
+.tool-postit.is-dragging {
+  z-index: 101 !important;
+  cursor: grabbing;
+  transition: none;
 }
 
 .tool-postit:focus-visible {

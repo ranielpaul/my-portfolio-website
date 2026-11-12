@@ -105,7 +105,7 @@ function togglePinnedTool(name) {
                     </button>
                 </div>
                 <div class="tool-reveal-hint text-secondary">
-                    Drag the slider or use the arrow keys to reveal each note.
+                    Drag the slider or use the arrow keys to reveal more notes. Drag notes to rearrange the board.
                 </div>
             </div>
 

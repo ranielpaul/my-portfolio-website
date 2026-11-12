@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import ToolsItemCard from './ToolsItemCard.vue'
 
 const props = defineProps({
@@ -22,6 +22,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['toggle-pin'])
+const draggedPositions = ref({})
 
 const notePalettes = [
     { note: '#fff2a8', tape: '#ffe56d' },
@@ -89,27 +90,35 @@ const layouts = computed(() => ({
     mobile: createLayout(props.totalCount, 2, props.category),
 }))
 
-function noteStyle(index) {
+function noteStyle(note, index) {
     const position = {
         desktop: layouts.value.desktop[index],
         tablet: layouts.value.tablet[index],
         mobile: layouts.value.mobile[index],
     }
     const palette = notePalettes[index % notePalettes.length]
+    const draggedPosition = draggedPositions.value[note.name]
 
     return {
-        '--note-left': position.desktop.left,
-        '--note-top': position.desktop.top,
-        '--note-left-tablet': position.tablet.left,
-        '--note-top-tablet': position.tablet.top,
-        '--note-left-mobile': position.mobile.left,
-        '--note-top-mobile': position.mobile.top,
+        '--note-left': draggedPosition?.left ?? position.desktop.left,
+        '--note-top': draggedPosition?.top ?? position.desktop.top,
+        '--note-left-tablet': draggedPosition?.left ?? position.tablet.left,
+        '--note-top-tablet': draggedPosition?.top ?? position.tablet.top,
+        '--note-left-mobile': draggedPosition?.left ?? position.mobile.left,
+        '--note-top-mobile': draggedPosition?.top ?? position.mobile.top,
         '--note-rotation': position.desktop.rotation,
         '--note-rotation-tablet': position.tablet.rotation,
         '--note-rotation-mobile': position.mobile.rotation,
         '--note-color': palette.note,
         '--tape-color': palette.tape,
         zIndex: index + 1,
+    }
+}
+
+function updateNotePosition(name, position) {
+    draggedPositions.value = {
+        ...draggedPositions.value,
+        [name]: position,
     }
 }
 </script>
@@ -143,7 +152,8 @@ function noteStyle(index) {
                     :tool="note"
                     :category="note.category"
                     :pinned="pinnedToolName === note.name"
-                    :position-style="noteStyle(index)"
+                    :position-style="noteStyle(note, index)"
+                    @drag="updateNotePosition(note.name, $event)"
                     @click="emit('toggle-pin', note.name)"
                 />
             </TransitionGroup>
