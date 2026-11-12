@@ -127,7 +127,7 @@ function noteStyle(index) {
             </div>
 
             <p v-if="notes.length === 0" class="tool-board-empty">
-                Choose a category, then move the slider to pin your first note.
+                You can choose a category,or just move the slider to pin your first note.
             </p>
 
             <TransitionGroup

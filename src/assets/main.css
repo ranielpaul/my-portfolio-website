@@ -250,6 +250,7 @@ body {
 }
 
 .tool-board-frame {
+  --tool-note-height: 11.6rem;
   max-width: 68rem;
   margin: 0 auto;
   padding: 0.55rem 0.55rem 0;
@@ -261,7 +262,7 @@ body {
 
 .tool-board-surface {
   position: relative;
-  height: 46.4rem;
+  height: calc(3 * var(--tool-note-height) + 0.5rem);
   overflow: hidden;
   border: 1px solid rgba(100, 116, 139, 0.25);
   border-radius: 0.55rem 0.55rem 0.25rem 0.25rem;
@@ -357,7 +358,7 @@ body {
   left: var(--note-left);
   display: flex;
   width: clamp(9rem, 19vw, 13rem);
-  height: 11.6rem;
+  height: var(--tool-note-height);
   flex-direction: column;
   padding: 1rem 0.9rem 0.75rem;
   border: 1px solid rgba(15, 23, 42, 0.12);
@@ -659,21 +660,21 @@ body {
 }
 
 @media (max-width: 991.98px) {
-  .tool-board-surface {
-    height: 43.2rem;
+  .tool-board-frame {
+    --tool-note-height: 10.8rem;
   }
 }
 
 @media (max-width: 767.98px) {
-  .tool-board-surface {
-    height: 39.2rem;
+  .tool-board-frame {
+    --tool-note-height: 9.8rem;
   }
 
   .tool-postit {
     top: var(--note-top-mobile);
     left: var(--note-left-mobile);
     width: clamp(8.5rem, 37vw, 10rem);
-    height: 9.8rem;
+    height: var(--tool-note-height);
     padding: 0.85rem 0.65rem 0.6rem;
     transform: translate(-50%, -50%) rotate(var(--note-rotation-mobile));
   }
@@ -705,7 +706,6 @@ body {
     top: var(--note-top-tablet);
     left: var(--note-left-tablet);
     width: clamp(9rem, 22vw, 12rem);
-    height: 10.8rem;
     transform: translate(-50%, -50%) rotate(var(--note-rotation-tablet));
   }
 }

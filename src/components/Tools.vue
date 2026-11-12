@@ -5,7 +5,7 @@ import ToolsCategoryCard from './ToolsCategoryCard.vue'
 
 const categories = ['All', 'Frontend', 'Backend', 'Tools']
 const activeCategory = ref('All')
-const visibleCount = ref(0)
+const visibleCount = ref(3)
 const pinnedToolName = ref('')
 
 const selectedTools = computed(() => tools.flatMap((group) => {
