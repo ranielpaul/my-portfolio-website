@@ -7,7 +7,7 @@
 	const notyf = new Notyf();
 
     // Form
-    const WEB3FORMS_ACCESS_KEY ='8295ec4a-e929-4df6-b7ae-31be2aca2f8c';
+    const WEB3FORMS_ACCESS_KEY = import.meta.env.WEB3FORMS_ACCESS_KEY;
     const form = ref(null)
 
     // Form Statuses
@@ -66,8 +66,8 @@
 
     // Captcha 
 
-	const SITE_KEY='6LcmsBouAAAAAN_1ZkNCaVrEMbiuR7qpqAJ7RmVu'
-	const SECRET_KEY='6LcmsBouAAAAACJkrqpNmOumAMCihBdNec6S6KfR'	
+	const SITE_KEY= import.meta.env.SITE_KEY;
+	const SECRET_KEY= import.meta.env.SECRET_KEY;
         
 	const recaptchaContainer = ref(null);
 	const recaptchaWidgetId = ref(null);
