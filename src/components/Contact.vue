@@ -7,7 +7,7 @@
 	const notyf = new Notyf();
 
     // Form
-    const WEB3FORMS_ACCESS_KEY = import.meta.env.WEB3FORMS_ACCESS_KEY;
+    const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
     const form = ref(null)
 
     // Form Statuses
@@ -66,8 +66,7 @@
 
     // Captcha 
 
-	const SITE_KEY= import.meta.env.SITE_KEY;
-	const SECRET_KEY= import.meta.env.SECRET_KEY;
+	const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
         
 	const recaptchaContainer = ref(null);
 	const recaptchaWidgetId = ref(null);
